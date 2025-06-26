@@ -1,0 +1,40 @@
+JVM is not a physical machine it is a abstract machine
+
+Java program -> compiler -> bytecode -> JVM -> Machine code -> CPU -> Output
+
+Java program is (.java)
+Bytecode is (.class)
+
+Think of writing Java code like writing a recipe:
+
+JDK is the full kitchen (write + cook).
+
+javac is the chef that turns recipe → raw dish (bytecode).
+
+JVM is the stove that cooks it into edible food (machine code).
+
+The CPU serves it.
+
+You enjoy the output!
+
+
+
+| Step                      | Description                                                            |
+| ------------------------- | ---------------------------------------------------------------------- |
+| **1. Java Source Code**   | You write your program in `.java` file. Example: `Hello.java`          |
+| **2. Compiler (`javac`)** | Converts `.java` file → `.class` file (bytecode)                       |
+| **3. Bytecode**           | Intermediate code, **platform-independent**, runs on any OS with JVM   |
+| **4. JVM**                | Converts bytecode to machine-specific code (Windows, Mac, Linux, etc.) |
+| **5. Machine Code**       | The final instructions CPU understands                                 |
+| **6. Output**             | The result of your code, printed to console or GUI                     |
+
+
+Here JVM - platform dependent and java program - platform independent
+
+for Example mac , windows, linux each have particular OS
+
+JVM understands bytecode
+
+
+
+

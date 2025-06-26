@@ -1,0 +1,15 @@
+Started 26/05/2025 -> Shreyansh Jain
+
+
+Procedural programming is a programming paradigm that is based on the concept of procedure calls, where a program is divided into procedures, also known as functions or subroutines
+
+Examples  for the Procedural programming are:
+
+C, pascal, Fortan, Python also supports Procedural programming
+
+
+Procedural vs Object-Oriented Programming: Procedural focuses on functions and procedures, while object-oriented programming (OOP) focuses on objects and classes.
+
+So here Car myCar = new Car() -> like this why we create in java na it is used to create the object in heap only   -----> Try chatgpt for this line ----> About object creation in java and c++
+
+Java does not support multiple inheritance with classes ----- v.v.,v.v..v..v imp ---- Explore this very clealry in internet

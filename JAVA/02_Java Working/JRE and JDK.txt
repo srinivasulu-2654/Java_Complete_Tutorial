@@ -1,0 +1,14 @@
+JRE -> Java Runtime Environment
+
+JRE => JVM + Class Libraries -> like java.math, java.max like that
+
+we can run any java program of bytecode if it have JRE 
+
+JDK - Java Development Kit
+
+JDK  = JRE + (programming language + compiler + debugging)
+
+JVM, JDK, JRE == > platform dependent
+
+code -> bytecode =>platform independent
+

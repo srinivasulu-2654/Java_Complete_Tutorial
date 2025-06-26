@@ -1,0 +1,61 @@
+Constructor:
+It is used to create the instance
+It is similar to method expect:
+
+Name: same as class name
+
+Return type: constructor do not have any return type
+
+Constructor can not be static or final or abstract, synchronized
+
+
+Explore some questions for interview on constructor:
+Like why cons do not have return type
+
+Why cons can not be final
+
+Why cons can not be static
+
+Why cons can not be abstract? -> In this case we have to write only declaration in parent class rest all do in sub class Heere the inheritance 
+
+Can we define constructor in interface?
+
+Why cons name is same as class name
+
+constructor is defined as as static lets see:
+
+-> static  can only access static variables and static methods
+
+-> it cannot access instance variables 
+
+-> if static defined you wont able to use super()
+
+
+Can we define constructor in an interface? :  -> Explore more about this:
+
+Why Can’t We Create an Object of an Interface in Java?
+
+Because an interface doesn't have a complete implementation — it just contains method declarations (without body), and no constructor or data to initialize. So Java won’t allow you to create an object of an interface directly.
+
+🔹 Why Constructor Cannot Be static?
+static means "class-level", no object needed.
+
+But constructor’s job is to create an object.
+
+So, how can a constructor be static when it's responsible for creating an object in the first place? ❌
+
+
+| ❓ Question                          | ✅ Explanation                                                                    |
+| ----------------------------------- | -------------------------------------------------------------------------------- |
+| Why constructor has no return type? | JVM handles it internally, it returns object ref implicitly                      |
+| Why can’t it be final?              | Constructors are not inherited, so can't override them                           |
+| Why not static?                     | You call constructor when creating an object, but static methods belong to class |
+| Why not abstract?                   | Constructor must have a body and run code – abstract is just declaration         |
+| Can interface have a constructor?   | No, because you can’t instantiate an interface                                   |
+| Why constructor name = class name?  | JVM identifies it during object creation                                         |
+
+
+
+
+
+

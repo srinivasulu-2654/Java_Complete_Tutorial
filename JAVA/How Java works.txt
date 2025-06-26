@@ -1,0 +1,35 @@
+please explore this very clearly :
+
+JVM - Java virtual machine :
+
+JVM (Java Virtual Machine) is a part of Java that runs Java programs.
+It reads the compiled Java code (called bytecode) and helps it run on any computer.
+It makes Java programs work the same on Windows, Mac, or Linux.
+
+On top of the process it contains like this :
+
+Hardware -> means desktop, laptop or mobile phone
+
+           |
+
+Operating system for the particular device 
+
+           |
+
+JRE -> Java Runtime Environment
+
+           |
+
+JVM -> Java Virtual Machine
+
+
+
+Java is platform independent language because it can run in any system of containing any Operating system (windows , linux, MAC etc)
+
+Human writes code -> java code -> converts through compiler (javac) into -> Byte code -> goes on JVM and it will run
+
+
+if we want to run java code in your friend system then no need to install JDK -> so java is WORA (Write Once and Run anywhere) 
+
+JVM is not a physical machine it is a abstract machine
+
