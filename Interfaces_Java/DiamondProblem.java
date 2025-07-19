@@ -107,5 +107,69 @@ interface BirdConstants {
 }
 
 
+******** Important question ********** explore this
+
+ Why can't interface methods be declared final?
+
+
+public class InterfaceRules {
+    public static void main(String[] args) {
+        Parrot p = new Parrot();
+        p.fly();
+        p.hasBeak();
+    }
+}
+
+// ❌ This will give a COMPILATION ERROR if you try final method in interface
+
+interface Bird {
+    final void fly(); // ❌ ERROR: Illegal modifier
+}
+
+
+// ✅ Correct interface with abstract methods (default behavior)
+
+interface Bird {
+    void fly(); // implicitly public abstract
+    void hasBeak();
+}
+
+class Parrot implements Bird {
+
+    @Override
+    public void fly() {
+        System.out.println("Parrot flies high");
+    }
+
+    @Override
+    public void hasBeak() {
+        System.out.println("Parrot has a sharp beak");
+    }
+}
+
+/*
+🧠 Why can't interface methods be declared final?
+
+- Interface methods are meant to be overridden by implementing classes
+- final keyword means "method cannot be overridden"
+- These two contradict each other!
+
+🔴 Interface = "Please override me"
+🔴 final = "You are NOT allowed to override me"
+
+So this is a conflict → that's why Java gives a compilation error
+
+✅ Summary:
+- You CANNOT use `final` for methods inside an interface
+- You CAN use:
+    - public ✅
+    - abstract ✅ (implicit)
+    - static ✅ (Java 8+)
+    - default ✅ (Java 8+)
+    - ❌ final — NOT ALLOWED
+
+
+
+
    
  */

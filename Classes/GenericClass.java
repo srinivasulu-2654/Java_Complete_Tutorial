@@ -7,7 +7,7 @@ package Classes;
 /*  
     here we came to this concept for not 
 
-    explore about the non-generic sub class  
+    explore about the non-generic s ub class  
  */
 
 public class GenericClass {
