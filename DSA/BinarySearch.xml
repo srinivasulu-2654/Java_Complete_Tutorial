@@ -1,0 +1,65 @@
+<!-- 001 - Single Element in a Sorted Array  -->
+
+Approach 1 : Bit manipulation
+
+-> Normal we can do by bit manipulation like if we do 1 ^ 1  it will give 0 and 1 ^ 0 it will 1
+-> So in array also we can so like that only 
+
+        <!-- for(int i=0;i<n-1;i++)
+        {
+            if(nums[i] ^ nums[i+1] != 0)
+            {
+                 return nums[i+1];
+                
+            }
+        } -->
+
+Approach 2 : Binary Search
+
+arr[] = [1 1 2 2 3 3 4 5 5 6 6]
+
+-> Here the thing is:
+   1) Actually the elements are stored in the form of (even,odd) or else (odd,even)
+   2) So if we are in (even,odd) then eliminate left half element will be on right half
+   3) If we are in (odd,even) then eliminate right half element will be on left half
+   4) And also check the corner cases
+
+        <!-- if(n == 1) return nums[0];
+        if(nums[0] != nums[1]) return nums[0];
+        if(nums[n-1] != nums[n-2]) return nums[n-1];
+
+        int low = 1, high = n-2;
+
+        while(low<=high)
+        {
+            int mid = (low+high)/2;
+            if(nums[mid] != nums[mid-1] && nums[mid] != nums[mid+1]) return nums[mid];
+
+            if((mid % 2 == 1 && nums[mid] == nums[mid-1]) || mid % 2 ==0 && nums[mid] == nums[mid+1]) low = mid + 1;
+            else high = mid - 1;
+        } -->
+
+************ Completed**************
+
+
+<!-- 002 - Find Peak Element -->
+
+-> For this problem see the striver graph like first gradually rise to peak element and gradually decrease the graph
+
+Here is the code :
+
+        <!-- if(n==1) return 0;
+        if(nums[0]>nums[1]) return 0;
+        if(nums[n-1]>nums[n-2]) return n-1;
+
+        int l = 1,h=n-2;
+        while(l<=h)
+        {
+            int mid = (l+h)/2;
+
+            if(nums[mid] > nums[mid-1] && nums[mid] > nums[mid+1]) return mid;
+            else if(nums[mid]>nums[mid-1]) l = mid+1;
+            else h = mid-1;
+        } -->
+
+

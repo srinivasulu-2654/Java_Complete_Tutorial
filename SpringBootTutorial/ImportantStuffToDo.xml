@@ -1,0 +1,342 @@
+| Section | Title                         | Why Important                                                         |
+| ------- | ----------------------------- | --------------------------------------------------------------------- |
+| **4**   | Maven                         | For understanding project build system (basic knowledge is enough)    |
+| **6**   | Hibernate                     | Must for JPA/ORM — learn annotations, relationships, mappings         |
+| **7**   | Spring Getting Started        | Basics to enter Spring world                                          |
+| **10**  | Moving to Spring Boot         | Core transition to modern dev                                         |
+| **12**  | Spring Boot Web               | Core of web application dev                                           |
+| **14**  | Building a Project            | Apply what you learned in a real project                              |
+| **15**  | REST using Spring Boot        | Must. Product companies ask REST API-based questions                  |
+| **16**  | Spring Data JPA               | Core topic (how Spring talks to DB)                                   |
+| **17**  | Project using Spring Boot MVC | Must, real implementation of layers (Controller, Service, Repository) |
+| **20**  | Spring Security               | Must for production-level apps. Used in login/auth                    |
+| **22**  | JWT and OAuth2                | For token-based auth — required for modern APIs                       |
+| **23**  | Docker                        | Deployment knowledge. Must for interviews and real apps               |
+| **24**  | Cloud Deployment              | Bonus. Useful for full stack/backend dev roles                        |
+
+19,26 also if there is any time permits
+
+
+
+| Step   | Section                                 | What You'll Learn                                    | Must/Optional |
+| ------ | --------------------------------------- | ---------------------------------------------------- | ------------- |
+| 1️⃣    | **Section 4: Maven**                    | Project setup, `pom.xml`, build lifecycle            | ✅ Must        |
+| 2️⃣    | **Section 7: Spring Getting Started**   | Basics of Spring framework & DI                      | ✅ Must        |
+| 3️⃣    | **Section 10: Moving to Spring Boot**   | Modern Spring Boot approach                          | ✅ Must        |
+| 4️⃣    | **Section 12: Spring Boot Web**         | Build web apps, `@RestController`, `@RequestMapping` | ✅ Must        |
+| 5️⃣    | **Section 15: REST using Spring Boot**  | Create REST APIs (GET/POST/PUT/DELETE)               | ✅ Must        |
+| 6️⃣    | **Section 6: Hibernate**                | JPA, ORM, `@Entity`, `@OneToMany`, `@ManyToOne`      | ✅ Must        |
+| 7️⃣    | **Section 16: Spring Data JPA**         | Repositories, queries, DB integration                | ✅ Must        |
+| 8️⃣    | **Section 14: Building a Project**      | Hands-on mini project using full stack               | ✅ Must        |
+| 9️⃣    | **Section 17: Spring Boot MVC Project** | Clean architecture: Controller, Service, Repo        | ✅ Must        |
+| 🔟     | **Section 20: Spring Security**         | Roles, login, authentication                        | ✅ Must        |
+| 1️⃣1️⃣ | **Section 22: JWT & OAuth2**            | Token-based authentication                           | ✅ Must        |
+| 1️⃣2️⃣ | **Section 23: Docker**                  | Build & containerize Spring Boot app                 | ✅ Must        |
+| 1️⃣3️⃣ | **Section 24: Cloud Deployment**        | Host your app on cloud (Heroku, AWS)                 | ✅ Must        |
+| 1️⃣4️⃣ | **Section 19: AOP**                     | Cross-cutting concerns (optional)                    | ⚠️ Optional   |
+| 1️⃣5️⃣ | **Section 26: Microservices**           | Learn after core + projects                          | ⚠️ Optional   |
+
+
+
+<!-- Naveen Reddy Telsuko -->
+
+
+✅ Final Must-Study Sections
+📦 Project Setup & Spring Basics
+Section 4: Maven ✅ (Just get basic idea)
+
+Section 7: Spring Getting Started ✅
+
+Section 10: Moving to Spring Boot ✅
+
+🛢️ Database &amp; ORM
+Section 6: Hibernate ✅ (Learn JPA annotations, mapping, relationships)
+
+Section 16: Spring Data JPA ✅ (Focus on repositories and custom queries)
+
+🌐 Web + REST API
+Section 12: Spring Boot Web ✅ (Core for web apps)
+
+Section 15: REST using Spring Boot ✅ (Super important)
+
+🧱 Project Building
+Section 14: Building a Project ✅ (Practice applying layers)
+
+Section 17: Project using Spring Boot MVC ✅ (Very helpful)
+
+🔐 Security
+Section 20: Spring Security ✅ (Learn roles, authentication, filters)
+
+Section 22: JWT (JSON Web Token) and OAuth2 ✅ (Modern auth method)
+
+📦 Deployment
+Section 23: Docker ✅ (Required in modern dev)
+
+Section 24: Cloud Deployment ✅ (Nice to have, shows complete skill)
+
+
+
+<!-- From Here will start spring boot notes -->
+
+1. Learning about the Maven Section - 4  ************************* Maven
+
+| Concept            | Why You Need It                      |
+| ------------------ | --------------------------------------- |
+| `pom.xml`          | To manage dependencies and project info |
+| Lifecycle Commands | To build and run projects               |
+| Project Structure  | To organize your backend app            |
+| Dependencies       | To plug in Spring Boot features         |
+
+Maven is a build automation and dependency management tool.
+
+It’s used to build, compile, package, and manage dependencies for Java-based projects.
+
+Almost all Spring Boot projects use Maven (or Gradle).
+
+<!-- So Explore about the Jar files which were oudated but just explore these once for knowing purpose -->
+
+If we use maven then if we give our project to our collegue without any conflicts maven will ready to run all the java code irrespective of dependencies
+
+Maven provides Archetypes
+
+🧱 What is a Maven Archetype?
+👉 A Maven archetype is like a project template generator.
+
+It helps you quickly generate a new Maven project with a predefined folder structure, files, and configuration.
+
+So here if we want to use old version like downloading jar files or without using Maven then we have to maintain everything like dependencies version like that otherwise it wont work
+
+If we want to connect with Mysql connector then go to "Mvn Repositories" then download Mysql connector this is old method but there are some maven dependencies so we can copy and just paste in (Project Object Model)pom.xml files that's it
+
+Everytime there will GAV in pom.xml 
+
+<groupId>org.example</groupId>
+<artifactId>MavenDemo</artifactId>
+<version>1.0-SNAPSHOT</version>
+
+Like above same also will be there mvn repositories 
+
+-> so after adding from mvn repositories there will be one download in dependencies which is known as "Transitive Dependency"
+
+| Term                  | Meaning                                                  |
+| --------------------- | -------------------------------------------------------- |
+| Direct Dependency     | The dependency you added in your POM file                |
+| Transitive Dependency | The dependencies that came **because of** the direct one |
+
+We added this :
+
+<dependency>
+  <groupId>com.mysql</groupId>
+  <artifactId>mysql-connector-j</artifactId>
+  <version>9.2.0</version>
+</dependency>
+
+👉 But you also see: (It came automatically)
+
+com.google.protobuf:protobuf-java:4.29.0 called -> "Transitive Dependency"
+
+-> If we want to give our project to others then no need to send jar files we can direclty send pom.xml file that's it
+
+-> there is called effective pom which by default add some features
+
+A "Maven Archetype" is like a template/project generator that helps you create a ready-made project structure with:
+
+Standard folders (src/main/java, src/test/java, etc.)
+
+Predefined pom.xml
+
+Sample files (like App.java and AppTest.java)
+
+-> How maven works behind the scene just explore this
+
+C:\Users\<yourname>\.m2\repository
+
+
+
+2. Spring Getting Started Section - 7 *************** Spring Theory
+
+spring works with POJO
+
+🧠 Spring is a Java framework that helps you build enterprise-level applications — like web apps, APIs, desktop apps, etc.
+
+| Term                 | What It Means                        | Analogy                                 |
+| -------------------- | ------------------------------------ | --------------------------------------- |
+| **Spring**           | General Java framework               | Like a car engine                       |
+| **Spring Framework** | The full manual configuration setup  | A raw engine that needs assembling      |
+| **Spring Boot**      | Simplified, modern version of Spring | A Tesla — ready to drive with one click |
+
+
+Spring is the parent,
+Spring Framework is the raw toolbox,
+Spring Boot is the smart assistant that configures and runs everything for you.
+
+| Feature           | Spring Framework           | Spring Boot                          |
+| ----------------- | -------------------------- | ------------------------------------ |
+| Configuration     | Manual (XML, Java-based)   | Automatic (auto-config)              |
+| Server setup      | You set up server manually | Embedded server (Tomcat/Jetty)       |
+| Complexity        | High                       | Low (Developer-friendly)             |
+| Development speed | Slower                     | Much faster                          |
+| Use case          | Old-style apps             | Modern web APIs, Microservices, etc. |
+
+
+IOC & DI
+
+IOC -> Inversion of Control
+DI -> Dependency Injection
+-> IOC Container
+
+-> Here as a programmer your main concentraion should be on "Business Logic" not on "Objection creation"
+-> Spring creates objects for and should store in IOC Container
+-> IOC is a principle to follow to achieve this (IOC COntainer) but exactly how it works that's name is called "Dependency Injection"
+-> IOC is the principle and DI is the design pattern
+
+⚙️ What's the IOC Container?
+It’s the Spring engine that:
+
+Creates objects (beans)
+
+Manages them (singleton, prototype)
+
+Injects them when required
+
+Destroys them when app shuts down
+
+It’s like a powerful object manager.
+
+
+| Step | What Happens                                                                |
+| ---- | --------------------------------------------------------------------------- |
+| 1️⃣  | Spring scans your classes for `@Component`, `@Service`, `@Repository`, etc. |
+| 2️⃣  | It creates objects (beans) and stores them in the **IoC Container**         |
+| 3️⃣  | Wherever you write `@Autowired`, it injects the required bean automatically |
+| 4️⃣  | You write business logic, Spring handles object management                  |
+
+
+| Term              | What It Means                                              |
+| ----------------- | ---------------------------------------------------------- |
+| **IoC**           | Principle: Don't create dependencies manually              |
+| **DI**            | Design Pattern to inject dependencies                      |
+| **IoC Container** | Spring's internal manager that holds and injects all beans |
+
+-> Spring is a framework on top of it there is came into picture called Spring boot
+-> Spring 6 and spring boot 3
+
+-> To create the project u have to go to the site called 
+<!-- start.spring.io --> 
+<!-- https://start.spring.io/ -->
+
+-> For that above site we can directly add in pom.xml also but start.spring.io but this site will give direclty all the things automatically
+
+-> Spring is responsible to create objects called as "beans"
+
+-> IN JVM there will be container where objects will be there like obj1, obj2, obj3
+
+<!-- package com.Sreenu.app;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class SpringBootDemoApplication {
+
+	public static void main(String[] args) {
+
+		ApplicationContext context = SpringApplication.run(SpringBootDemoApplication.class);
+
+		Alien obj = context.getBean(Alien.class);
+		obj.compile();
+	}
+
+} -->
+
+So actually above is the main code 
+
+-> If before that we have to mention like @Component on above the Alien class otherwise will give error
+
+🔁 Full Working Flow in Your Example:
+App starts via SpringBootDemoApplication.main().
+
+Spring scans packages and finds @Component on Alien.
+
+Spring creates Alien object and puts it in ApplicationContext (IOC container).
+
+You ask for it: context.getBean(Alien.class)
+
+You call method: obj.compile() → prints "Code compiled..."
+
+<!-- Alien obj1 = context.getBean(Alien.class);
+obj1.compile(); -->
+
+-> So the above how many times u created the object that many times object will create
+
+-> What if Alien class depends upon another class let's see this also 
+
+-> So we have to use @Autowired annotation check below
+
+<!-- package com.Sreenu.app;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Alien {
+
+    @Autowired
+    Laptop laptop;
+
+    public  void code()
+    {
+        laptop.compile();
+    }
+
+} -->
+
+@SpringBootApplication → enables component scan
+@Component on Alien → registers Alien as a bean
+@Component on Laptop → registers Laptop as a bean
+@Autowired in Alien → injects Laptop object into Alien
+Alien.code() → internally calls laptop.compile()
+
+
+3. Moving to spring boot *********** -> Section - 10
+
+Spring automatically registers this class as a bean named:
+
+"laptop"  (i.e., class name with lowercase first letter)
+
+Even though the class is Laptop, Spring internally does:
+
+beanName = "laptop";
+
+
+| Injection Type        | Use When                                                   |
+| --------------------- | ---------------------------------------------------------- |
+| Field Injection       | Small projects / quick code (not recommended for big apps) |
+| Setter Injection      | Dependency is optional or changeable                       |
+| Constructor Injection | **Best for required dependencies** (clean, testable)       |
+
+Client -> Server -> DataBase
+
+In Server there are multiple Layers:
+
+Controller | Service | Repository
+
+Controller -> accept the reqest and send the data back
+Service -> do any kindd of processing data (Data processing) example. 2 + 3 = 5 , find factorial of 5 like that => Logic 
+Repository => actually service wont have data so it will helpful to service to get data from Database
+-> Repository also called as "DAO (Data Access Object)"
+
+
+Actually  @Component and @Service acts as same as both will manage the bean 
+
+<!-- 
+@Component       // utility class
+public class MyHelper {}
+
+@Service         // service layer
+public class UserService {}
+
+@Repository      // repo layer
+public interface UserRepository extends JpaRepository<User, Integer> {} -->
+
