@@ -1,0 +1,48 @@
+<!-- -> Why Stop, Resume, Suspended method is depricated? ************** v.v.v.v.v Imp********** -->
+
+stop()
+Suspend
+Resume
+
+✅ Alternative (Safer ways):
+Use:
+
+volatile flags
+
+wait() / notify()
+
+Thread.interrupt()
+
+ExecutorService.shutdown()
+
+
+<!-- 
+  Why are Thread.stop(), Thread.suspend(), and Thread.resume() DEPRECATED in Java?
+  ******************************************************************************************
+  ✅ Meaning of Deprecated:
+  - Deprecated means the method/class is still present but should NOT be used.
+  - It may be unsafe, outdated, or planned to be removed in future versions.
+  - Using deprecated code shows warnings during compilation.
+
+  ❌ Why Thread.stop() is Deprecated:
+  - It terminates the thread immediately without giving it a chance to clean up.
+  - Can leave shared resources (files, DB connections, memory) in an inconsistent state.
+  - May corrupt the application if the thread is stopped mid-operation.
+
+  ❌ Why Thread.suspend() and Thread.resume() are Deprecated:
+  - suspend() pauses the thread, resume() continues it.
+  - If a thread is suspended while holding a lock, other threads waiting for that lock get stuck.
+  - This causes deadlocks and freezes the application.
+  - resume() cannot fix the deadlock if suspend() was called at the wrong time.
+
+  ✅ Safe Alternatives:
+  - Use Thread.interrupt() and check for interruption inside run():
+      while (!Thread.currentThread().isInterrupted()) { ... }
+  - Use flags (volatile booleans) to pause/resume logic safely.
+  - Use wait() / notify() with proper synchronization.
+  - Use modern ExecutorService or java.util.concurrent package.
+
+  🔥 INTERVIEW POINT SUMMARY:
+  - stop(), suspend(), and resume() are deprecated due to unsafe behavior and deadlock risks.
+  - Use interrupt mechanism or higher-level concurrency utilities for thread control.
+-->

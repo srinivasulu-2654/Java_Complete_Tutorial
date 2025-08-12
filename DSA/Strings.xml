@@ -1,0 +1,278 @@
+<!-- 001 - Remove outer paranthensis -->
+
+Approach 1:
+-> If stack is empty push into stack dont add to answer
+-> If stack is not empty push into stack add to the answer also 
+-> If close paranthensis comes pop out into the stack and add to the answer
+
+<!-- TC : O(n) SC : O(n) -->
+
+Approach 2:
+
+-> same here also if cnt != 0 then ans += s[i];
+-> if cnt != 0 then do cnt-- check here if cnt != 0 only we have to add ans += ')'
+-> if cnt == 0 then simply cnt++;
+
+***********************Completed *******************
+
+
+<!-- 002 - Reverse words in a string  -->
+
+Approach 1 :
+
+-> Use stringstream 
+-> But in gfg problem there is seperate thing called '.' explore this differnet problem
+-> This can be used like this getline(ss,token,'.')
+
+        <!-- string token = "";
+        stringstream ss(s);
+        vector<string>words;
+        
+        while(getline(ss,token,'.'))
+        {
+            if(!token.empty()) words.push_back(token);
+        }
+        
+        reverse(words.begin(),words.end());
+        
+        string res = "";
+        
+        for(int i=0;i<words.size();i++)
+        {
+            res += words[i];
+            if(i != words.size() - 1) res += '.';
+        }
+        
+        return res; -->
+
+-> The above code is very differnet just explore that also 
+
+Approach - 2:
+
+-> Two pointer Approach 
+
+        <!-- int i = 0;
+        int j;
+        while(i<n)
+        {
+            while(i<n && s[i] == ' ') i++;
+            if(i>=n) break;
+            j = i+1;
+            while(j<n && s[j] != ' ') j++;
+            string sub = s.substr(i,j-i);
+            if(res.empty()) res = sub;
+            else res = sub + " " + res;
+            i = j+1;
+        } -->
+
+TC : O(n^2) in worst case and O(n) in best case
+SC : O(n)
+
+Approach 3 :
+
+Steps:
+-> Reverse the string 
+-> assign l and r = 0
+-> then give ith every character to r
+-> if space is there then stop and reverse the string and add space to after every word and l = r;
+-> if space is there then do i++
+
+TC : O(n) SC : O(1)
+
+<!-- Explore the above problem very very very very important  -->
+
+***********************Completed *******************
+
+<!-- 003 - Largest Odd Number in String -->
+
+-> check from last if last digit is not divisble by 2 then pakka it is odd number only
+
+        <!-- string largestOddNumber(string num) {
+        int n = num.size();
+        for(int i=n-1;i>=0;i)
+        {
+            if((num[i] - '0') % 2 == 1)
+            {
+               return num.substr(0,i+1);
+            }
+        }
+            return "";
+        } -->
+
+TC : O(n) SC : O(1)
+
+***********************Completed *******************
+
+<!-- 004 - Longest Common Prefix -->
+
+Approach - 1:
+Steps:
+-> First take string as pre from s[0]
+-> and compare with this string to s[1] and increas the j pointer
+-> and modify the pre becuase if 2 was common then it will either common or not 
+-> then return pre.substr(0,j)
+
+Approach - 2:
+
+-> Sort the string array
+-> take s1 as starting and s2 as last string compare both that's it
+
+
+***********************Completed *******************
+
+
+<!-- 005 -  Isomorphic Strings -->
+
+-> Tricky question check all the corner cases that's it question will Completed
+
+        <!-- bool isIsomorphic(string s, string t) {
+        
+        int n = s.size();
+        if(s.size() != t.size()) return false;
+        unordered_map<char,int>mp1;
+        unordered_map<char,int>mp2;
+
+        for(int i=0;i<n;i++)
+        {
+           char c1 = s[i];
+           char c2 = t[i];
+
+           if(mp1.find(c1) != mp1.end() && mp1[c1] != c2) return false;
+           if(mp2.find(c2) != mp2.end() && mp2[c2] != c1) return false;
+
+           mp1[c1] = c2;
+           mp2[c2] = c1;
+        }
+
+        return true;
+} -->
+
+
+***********************Completed *******************
+
+<!-- 006 - Rotate String -->
+
+Approach 1:
+
+-> We have to work on this rotate(start of range , which position will become starting position of the range, end of the range)
+-> abcdef => if we rotate left shift na then it will become bcdefa => so here rotate(s.begin(), s.begin() + 1, s.end())
+=> if k positions na s.begin() + k
+
+        <!-- bool rotateString(string s, string goal) {
+        int m = s.length();
+        int n = goal.length();
+
+        if(m != n) return false;
+
+        // only m lenght times we can rotate
+
+        for(int cnt = 1;cnt<=m;cnt++)
+        {
+            // rotate(s.begin(),s.begin()+1,s.end());
+            rotate(begin(s),begin(s)+ 1,end(s));
+            if(s==goal) return true;
+        }
+
+        return false;
+    } -->
+
+TC : O(m^2)
+
+Approach 2:
+<!-- -> "1 important thing is if we concatenate a string with itself, it will contain all the rotations as a substring on it " -->
+
+        <!-- bool rotateString(string s, string goal) {
+        string temp = s + s;
+        if(s.size() != goal.size()) return false;
+        if(temp.find(goal) != string::npos)
+          return true;
+        return false;
+        }  -->
+
+Method 2 :
+
+        <!-- bool rotateString(string s, string goal) {
+        string temp = s + s;
+        int len = temp.size();
+        int m = goal.size();
+        int n = s.size();
+        if(n != m) return false;
+        int i =0,j=0;
+        while(i<len && j<m)
+        {
+          if(temp[i] == goal[j])
+            {
+                i++;
+                j++;
+            }
+            else
+            {
+                i = i-j+1;
+                j=0;
+            }
+        }
+        return j == m;
+    } -->
+
+TC : O(n)
+
+
+****************Completed *********************
+
+
+
+<!-- 007 - Valid Anagram -->
+
+        bool isAnagram(string s, string t) {
+        
+        int n = s.size();
+        int m = t.size();
+        unordered_map<char,int>mp;
+        for(int i=0;i<n;i++) mp[s[i]]++;
+        for(int i=0;i<m;i++) mp[t[i]]--;
+
+        for(auto it:mp)
+        {
+            if(it.second != 0) return false;
+        }
+        return true;
+    }
+
+****************Completed******************
+
+<!-- 008 - Sort Characters by frequency -->
+
+<!-- 009 - Maximum Nesting Depth of Paranthesis -->
+
+<!-- 010 - Roman Number to Integer and vice versa -->
+
+<!-- 011 - Roman Integer to Number and vice versa -->
+
+<!-- 012 - Implement Atoi -->
+
+<!-- 013 - Count Substring -->
+
+Approach 1 :
+
+Bruete Force :
+
+        <!-- int countSubstring(string s) {
+        // Code here
+        int n = s.size();
+        int cnt = 0;
+        for(int i=0;i<n;i++)
+        {
+            int cntA = 0,cntB = 0,cntC = 0; 
+            for(int j=i;j<n;j++)
+            {
+                if(s[j] == 'a') cntA++;
+                else if(s[j] == 'b') cntB++;
+                else if(s[j] == 'c') cntC++;     
+                if(cntA > 0 && cntB > 0 && cntC > 0) cnt++;
+            }
+        }
+        return cnt;
+    } -->
+
+TC : O(n^2)
+

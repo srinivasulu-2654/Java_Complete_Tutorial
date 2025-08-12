@@ -1,0 +1,89 @@
+ ==================== REST Overview ==================== 
+
+ REST stands for "Representational State Transfer "
+
+ It is an architectural style for designing networked applications over HTTP 
+
+ Why use REST?
+     - To expose backend functionality (like DB operations) via APIs
+     - So that frontend, mobile apps, or Postman can interact with backend 
+
+ REST uses standard HTTP methods to operate on resources 
+
+ ===== REST Methods Mapping =====
+     - GET     : To fetch/read data
+     - POST    : To create new data
+     - PUT     : To update existing data
+     - DELETE  : To delete data
+
+
+ ===== Real-Life Example: Student API =====
+     URL Pattern        Method       Operation
+     /students          GET          Get all students
+     /students/101      GET          Get student by ID
+     /students          POST         Add a new student
+     /students/101      PUT          Update existing student
+     /students/101      DELETE       Delete student
+
+
+ ===== REST in Spring Boot ===== 
+
+ Use @RestController instead of @Controller 
+ Use @GetMapping, @PostMapping, @PutMapping, @DeleteMapping to map endpoints 
+
+ <!-- Example:
+@RestController
+public class StudentController {
+
+    @GetMapping("/students")
+    public List<Student> getStudents() {
+        return studentService.getAll();
+    }
+
+    @PostMapping("/students")
+    public void addStudent(@RequestBody Student student) {
+        studentService.save(student);
+    }
+} -->
+
+
+ ===== REST Principles =====
+     - Stateless: No session maintained by server
+     - Client-Server: Frontend & backend separate
+     - Uniform Interface: Standard request-response format (usually JSON)
+     - Resource-based: URLs map to objects like /users, /products
+
+
+ ===== Typical JSON Response from REST API =====
+{
+  "id": 101,
+  "name": "Sreenu",
+  "marks": 95
+}
+
+
+ ===== Summary =====
+     REST = Representational State Transfer
+     ✅ Used to build backend APIs
+     ✅ Uses HTTP methods: GET, POST, PUT, DELETE
+     ✅ Data is returned in JSON format
+     ✅ Frontend or client can call REST API to fetch/update data
+     ✅ Spring Boot uses @RestController for this purpose
+
+
+ ================== END OF REST OVERVIEW ================== 
+
+ ✅ Final Summary for Beginners
+
+ | Question             | Answer                                 |
+| -------------------- | -------------------------------------- |
+| What is REST?        | A way to design backend APIs           |
+| What does it use?    | HTTP methods (GET, POST, etc.)         |
+| What does it return? | Mostly JSON                            |
+| Why use it?          | So frontend/mobile can talk to backend |
+| What is an endpoint? | A URL like `/students/101`             |
+
+
+<!-- HTTP Methods -->
+
+GET POST PUT DELETE

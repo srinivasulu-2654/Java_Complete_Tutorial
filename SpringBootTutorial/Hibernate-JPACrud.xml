@@ -1,0 +1,37 @@
+<!-- 60 -> Video -->
+
+What is Hibernate?
+
+-> A framework for persisting / saving  objects in a database 
+
+=> Explore all the benefits of the Hibernate
+
+=> well how does Hibernate work ?
+  -> It provides something called ORM (Object-To-Relational Mapping)
+  -> Here the developer defines mapping between java class and  database table
+
+=> Then explore about the what is JPA? 
+   -> Jakarta Persistence API(JPA) ... previously known as java Persistence API
+   -> Standard API for ORM
+=> Only a specification
+
+<!-- => Here explore more about the JPA Specs clearly -->
+
+🔷 What Is a JPA Vendor Implementation?
+As we said earlier:
+
+JPA is just a specification → interfaces, annotations, and contracts.
+
+To actually run your code (persist entities, execute queries, etc.), you need a JPA provider (i.e., a library/framework that implements those specs).
+
+These are called JPA vendor implementations.
+
+=> Like in JPA and all we can switch to anyone to Hibernate or eclipseLink like that because you are writing code based on JPA
+
+<!-- 61 Video -->
+
+=> How does Hibernate / JPA relate to JDBC
+   -> Here Hibernate JPA is on tob of the layer of JDBC
+
+=> Entity manager is the main component of the creating queries
+=> Entity manager is from Jakarta Persistence API(JPA)

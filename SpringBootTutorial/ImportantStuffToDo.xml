@@ -340,3 +340,148 @@ public class UserService {}
 @Repository      // repo layer
 public interface UserRepository extends JpaRepository<User, Integer> {} -->
 
+
+4. Spring Boot Web ******  -> Section - 12*******
+
+🔥 What is a Servlet?
+A Servlet is a Java class used to build web applications. It runs on a server and handles requests from web clients (like browsers), processes them, and sends back a response.
+
+👉 It is part of Java EE (Jakarta EE) and works on the server-side.
+
+-> Here explore about the Servlet and JSP 
+
+-> Servlet works on backedn and JSP used to show the HTML view pages 
+   
+   Sentence - 1
+
+-> If student data is stored in the database, when you fetch that data into your application, don't store it in simple variables — store it in objects (like Student class). This is part of the MVC pattern (Model-View-Controller).
+
+<!-- 📘 Explanation:
+When we fetch something from the database (like student records), we wrap that data into Java objects instead of using individual variables.
+
+For example:
+
+Student student = new Student(id, name, marks);
+This concept is part of Model in MVC, where Model = Java objects that hold the data. -->
+
+Sentence - 2
+
+-> Understand this flow:
+User request comes to the Server → Server passes it to Controller → Controller talks to Model (database) → then sends data to the View → View shows data to the user.
+
+📘 Explanation:
+This is the standard MVC flow.
+Let's say the user clicks “View Student Details”:
+
+Server (Tomcat) receives the request.
+
+Controller (Servlet) processes the request.
+
+Model (POJO + Database) fetches student data.
+
+View (JSP) displays the data back to the user.
+ 
+-> ✅ Corrected Sentence:
+In traditional Java web apps:
+Controller = Servlet,
+Model = POJO classes (Java objects),
+View = JSP (JavaServer Pages).
+
+📘 Explanation:
+You matched this perfectly 👏
+Just a bit of sentence cleanup. This is how MVC maps in Java EE:
+
+| Role       | Java Technology  |
+| ---------- | ---------------- |
+| Controller | Servlet          |
+| Model      | POJO (Java Bean) |
+| View       | JSP              |
+
+
+
+✅ Corrected Sentence:
+On Tomcat Server, JSP files are automatically converted into Servlets behind the scenes.
+
+📘 Explanation:
+This is 100% true.
+When you write a .jsp file and run it on Tomcat:
+
+Tomcat internally converts it into a Java class (Servlet).
+
+This Servlet generates HTML and sends it to the browser.
+
+✅ Final Summary for All Your Sentences:
+
+| Your Concept                                   | Clean Version + Explanation       |
+| ---------------------------------------------- | --------------------------------- |
+| Store DB data in object, not variables         | ✅ Use POJOs (Model in MVC)        |
+| MVC Flow: Server → Controller → View/Model     | ✅ Correct, just clean the wording |
+| Controller = Servlet, Model = POJO, View = JSP | ✅ Absolutely right                |
+| JSP is converted into Servlet in Tomcat        | ✅ Perfect & true                  |
+
+
+⚙️ Example Flow (Spring MVC Web App):
+🧑 User → 🌐 URL → 🚪 Controller → 🧠 Model (DB) → 📄 View → 🧑 User
+
+✅ Key Components in Spring MVC
+
+| Component      | Annotation                            | Role                       |
+| -------------- | ------------------------------------- | -------------------------- |
+| Controller     | `@Controller` or `@RestController`    | Handles web requests       |
+| RequestMapping | `@RequestMapping` / `@GetMapping` etc | Maps URL to methods        |
+| Model          | POJO + DB (via JPA/Hibernate)         | Stores and fetches data    |
+| View           | JSP/HTML/Thymeleaf                    | User sees this             |
+| ViewResolver   | Internally configured                 | Decides which page to show |
+
+-> By default spring boot does not support JSP page so for this we have to add one dependency in pom.xml file namely "tomcat jasper"
+
+-> Now it will come this time without downloading because we converted the jsp page into servlet by adding dependencies
+
+-> Just explore about the dispatch servlet also once => to map all the requests
+
+-> Actually  return "result.jsp"; in this also we can pass the result that it can print on screen not on console like result.jsp?add
+
+-> http://localhost:8080/add?num1=88&num2=99 here instead of sending in this url as a parameters there is another things
+
+
+    <!-- @RequestMapping("add")
+    public  String add(HttpServletRequest req, HttpSession session) {
+         System.out.println("adding the numbers: ");
+
+         int num1 = Integer.parseInt(req.getParameter("num1"));
+         int num2 = Integer.parseInt(req.getParameter("num2"));
+         int res = num1 + num2;
+         session.setAttribute("result",res);
+         System.out.println(res);
+         return "result.jsp";
+    } -->
+
+=> So above code is outdated code the new code and all will be in Intellij code editor just check in that
+=> See actually without sending parameters like this public  String add(int num1, int num2, HttpSession session) also works but instead we can send
+   like this na num and num2 then wont work just check with chatgpt
+=> By using Requestparam no need to use "HttpServletRequest req"
+=> Now i want to remove this in new version "HttpSession session" lets see which will remove this one
+=> If u want to transfer between the Controller and jsp we have to use something called as "Model"
+=> Instead of "HttpSession session" we are using "Model"
+=> for view we have so many options like jsp Thymeleaf liek that
+=> FOr example if we want to move .jsp into Thymeleaf then we face difficulties so explore this mava 
+=> Threre is something called view ViewResolver
+=> Spring boot properties explore what is this
+=> we can set properties through "spring application.properties"
+
+=> Actually we are removing this "return.jsp" so instead we have to set like this 
+
+   <!-- spring.mvc.view.prefix = /views/
+   spring.mvc.view.suffix = .jsp -->
+
+   in resources folder in that there will be 1 file called application.properties
+
+=> Explore about the "ModelandView"
+
+=> "Model model" instead of this we can use direclty this "ModelandView"
+
+=> Explore more about ModelAttribute also very important
+
+=> "@ModelAttribute" explore this very very very important
+
+=> Here if there is alien and alien1 then use ModelAttribute othere ModelAttribute is completely optional

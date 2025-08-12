@@ -63,3 +63,151 @@ Here is the code :
         } -->
 
 
+<!-- 003 - Koko Eating Bananas -->
+
+Steps:
+
+1) So we have return the minimum integer of k (Bananas eaten per hour)
+2) So at max what it will per hour the maximum interger only so find maximum in piles
+3) And run binary search on numbers like 1 to max number in piles
+4) So write a function to calculate total time taken to eat all the piles of Bananas in piles array
+5) so total time taken is <= h then ans = mid and l = mid + 1
+6) else r = mid - 1;
+
+
+<!-- class Solution {
+public:
+    
+    int maxi(vector<int>&piles)
+    {
+        int n = piles.size();
+        int maxi = INT_MIN;
+        for(int i=0;i<n;i++) maxi = max(maxi,piles[i]);
+
+        return maxi;
+
+    }
+
+    long long calHours(vector<int>&piles,int mid)
+    {
+        long long totalTimeTaken = 0;
+        int n = piles.size();
+        for(int i=0;i<n;i++)
+        {
+            totalTimeTaken += ceil((double)piles[i]/(double)mid);
+        }
+        return totalTimeTaken;
+    }
+
+    int minEatingSpeed(vector<int>& piles, int h) {
+        
+        int r = maxi(piles);
+        int l = 1;
+        int ans = INT_MAX;
+
+        while(l<=r)
+        {
+ 
+            int mid = (l+r)/2;
+       
+            long long temp = calHours(piles,mid);
+
+            if(temp <= h)
+            {
+               ans = mid;
+               r = mid - 1;
+            }
+
+            else l = mid + 1;
+        }
+
+        return ans;
+    }
+}; -->
+
+<!-- TC : n * O(log(max(piles[i]))) -->
+
+
+***********Completed***********
+
+<!-- 004 - Minimum Number of Days to Make m Bouquets -->
+
+<!-- 005 - Find the smallest Divisor -->
+
+<!-- 006 - Capacity to Ship Packages within D Days -->
+
+=> So here the main thing is we have carry the all the weights in d days
+
+<!-- class Solution {
+public:
+    bool fun(vector<int>& weights, int mid, int days) {
+        int n = weights.size();
+
+        int d = 1;
+        int sum = 0;
+        for (int i = 0; i < n; i++) {
+            if (weights[i] > mid)
+                return false;
+            if (sum + weights[i] > mid) {
+                d++;
+                sum = weights[i];
+            } else
+                sum += weights[i];
+        }
+
+        return d <= days;
+    }
+
+    int shipWithinDays(vector<int>& weights, int days) {
+
+        int n = weights.size();
+        int ans = -1;
+        int total = 0;
+        int maxi = 0;
+        for (int i = 0; i < n; i++)
+            total += weights[i];
+        for (int i = 0; i < n; i++)
+            maxi = max(maxi, weights[i]);
+        int l = maxi, r = total;
+
+        while (l <= r) {
+            int mid = (l + r) / 2;
+
+            bool val = fun(weights, mid, days);
+
+            if (val == true) {
+                ans = mid;
+                r = mid - 1;
+            } else
+                l = mid + 1;
+        }
+
+        return ans;
+    }
+}; -->
+
+
+**************Completed***********
+
+
+
+<!-- So From here we are seeing other part of binary search on answers part - 2 as we explored binary search on answers part - 1 find min or max -->
+
+
+<!-- 007 - Aggresive cows  -->
+
+Steps :
+
+-> First we have to calculate maximum possible in the minimum distance
+-> So run the loop from 1 to max-min and then check for 1 by one
+-> we have to be more than k cows not should be less than k cows 
+-> For exmaple [1,5,17] k =2
+
+TC : nlogn + log2(max-min) + N // for binary search
+
+=> If there is max - min or min - max then starigh away apply binary search
+
+<!-- 008 - Allocate Minimum Pages -->
+
+
+
