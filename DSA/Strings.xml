@@ -250,7 +250,7 @@ TC : O(n)
 
 <!-- 012 - Implement Atoi -->
 
-<!-- 013 - Count Substring -->
+<!-- 013 - Number of Substrings Containing All Three Characters (same as count substring) -->
 
 Approach 1 :
 
@@ -275,4 +275,35 @@ Bruete Force :
     } -->
 
 TC : O(n^2)
+
+Approach 2 :
+
+Optimal Approach :
+
+Steps:
+-> take freq array of size 3 add the occurence of a,b and c
+-> each should contain atleast 1 occurence in the freq array
+-> that means freq[0] > 0 && freq[1] > 0 && freq[2] > 0
+-> so that whenever satisfies this condition then res += n-j;
+-> then here this is the main case aaacb;
+-> so use while loop in this case there by occuratley will calculate the Substrings
+-> and then remove ith character frequency and add the jth character freq
+
+=> 
+<!-- 3306. Count of Substrings Containing Every Vowel and K Consonants II --> explore this question also similar only
+
+************************Completed****************************
+
+<!-- 014 - Longest Palindromic Substring -->
+
+Approach 1:
+Steps:
+-> So first we have to return the longest Palindromic substring
+-> for this we have run 2 loops check Palindromic function is true and then store longest substring in result
+
+Approach 2:
+Steps:
+-> Use dynamic programming Approach as it wont give TLE for all cases
+
+
 

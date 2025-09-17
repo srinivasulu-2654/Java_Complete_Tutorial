@@ -1,0 +1,72 @@
+1. When will use construtor injection and setter injection?
+👉 Interview point: Spring 4.3+ automatically injects beans into constructors without needing @Autowired if there’s only one constructor.
+Golden Rule:
+Use Constructor Injection for required dependencies.
+Use Setter Injection for optional or changeable dependencies.
+
+2.What is Autowiring?
+  👉 If there is exactly one bean of that type → it works fine.
+  👉 If there are multiple beans of the same type → Spring gets confused → we need "@Qualifier."
+
+2(i). What are these @Qualifier and @primary explain these?
+
+3.How Constructor Injection works Behind the Scenes?
+
+4.@SpringBootApplication is composed of the how many annotations? What are they?
+
+5. Explain lazy initialization ?
+   In this " spring.main.lazy-initialization=true" -> that means all the beans are not created untill it is necessary
+
+6. Bean scopes is another very important Spring Boot topic (direct interview favorite)? Explain this?
+   Singelton, Prototype => (only 1 bean  created, everytime new bean will create)
+
+7. Bean Lifecycle Methods - Annotations ? Bean Lifecycle Methods / Hooks?
+
+8. @Bean explain this annotation also clealr?
+
+
+*******************Part - 2*************************
+
+1. Explain what is JPA and Hibernate ? And also expalain what are the difference among these 2 things?
+
+2. what is ORM (Object To Relational Mapping) ?
+
+3. what are the challeges without JPA/Hibernate (Planin JDBC) ?
+
+
+***************Shrayansh jain Interview Questions *********************
+
+1. What are the servlets and what are the servlet Container? why nowadays are not using those?
+
+2. What is tight Coupling in the concept of not using IOC and dependency injection?
+  Interview Punchline
+  Without DI → Tight coupling, difficult to maintain & test.
+  With DI (Spring) → Loose coupling, flexibility, unit test friendly.
+  @Component → Register class as a bean.
+  @Autowired → Ask Spring to inject dependency automatically.
+
+3. what is the unit testing and why is getting much harder related to the above only?
+
+4. Before spring boot which cames first ? (spring mvc)
+
+5. what is the difference b/w spring mvc and spring boot?
+
+6. what is the embeded server and how it is useful explain?
+
+7. Difference b/w @Controller and @RestController?
+
+8. What is the @ResponseBody ?
+
+9. How to create Bean?
+
+10. So in this thing can you please clearly explain about me the @Configuration @Bean?
+
+11. Also explain me @Qualifier @Primary like that if there is multiple beans of same name how you will handle?
+
+12. Dependency Injection Principle(DIP) why it should be depend on abstraction or interface not on concrete class explain ?
+    D in SOLID = Depend on abstractions, not on concrete classes.
+
+13. Why @Autowired is not used for final (immutable things) on field injection and setter injection why?
+
+14. What is reflection in spring? (Means it all knows like this is field this is constructor like that in compile time itself)
+

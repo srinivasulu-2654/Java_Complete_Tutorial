@@ -1,0 +1,93 @@
+=> Difference b/w spring and spring boot
+
+-> What is an Embedded Server in Spring Boot? and Uses?
+   👉 Example: Like writing code → then copying the WAR file into tomcat/webapps folder → then starting Tomcat.
+
+   When this runs, Spring Boot:(that means main code in application)
+   Starts Embedded Tomcat.
+   Deploys your REST APIs inside it.
+   App is available at http://localhost:8080.
+
+->  Q: Does Spring Boot replace Spring MVC, Spring REST etc …? 
+    👉 No, Spring Boot does NOT replace Spring MVC, Spring REST, Hibernate, etc.
+
+-> Q: Does Spring Boot run code faster than regular Spring code? Answer : No
+    Spring Boot is just a framework on top of Spring.
+    It provides auto-configuration, embedded server (Tomcat/Jetty), and starter dependencies. But the underlying Spring container, dependency injection, AOP, etc. are the same.
+    Runtime execution speed: Same for Spring and Spring Boot.
+    Developer productivity speed: Spring Boot is way faster 🚀.
+
+-> Q: What are these files such as JAR, WAR files etc.?
+    1. JAR (Java ARchive)
+    A .jar file is like a zip file that contains compiled Java classes (.class files), resources, and metadata.
+    Used to package Java libraries or standalone applications.
+    Example: When you write a utility library and want to reuse it across projects, you package it as a JAR.
+    Can also contain a META-INF/MANIFEST.MF file that tells which class has main() → so you can run it like:
+
+    2.WAR (Web Application ARchive)
+    A .war file is specifically for web applications.
+    It contains:
+   Java classes (.class)
+   Libraries (/WEB-INF/lib)
+   Configuration (web.xml)
+   JSP/HTML pages
+    Needs to be deployed on an external web server like Tomcat, JBoss, WebLogic.
+   👉 Example: In old Spring MVC days, you packaged your app as myapp.war and deployed it in Tomcat.
+   👉 With Spring Boot, you don’t need this — Boot embeds Tomcat, so you just run a JAR.
+
+
+-> In pom.xml file there will be project name, version, JAR, WAR files like that
+-> There will be dependencies also in that pom.xml
+
+**************Difference b/w @Controller and @RestController ?*****************
+
+-> If we use @Controller we should use @ResponseBody because if we wont give then it wont give JSON format
+-> But in @RestController it will give automatically without using @ResponseBody
+
+-> 📌 What is @ResponseBody in Spring?
+  👉 @ResponseBody tells Spring "the return value of this method should go directly into the HTTP response body" instead of looking for a view (HTML/JSP page).
+    By default, if you use @Controller, Spring assumes you want to return a view name (like JSP/Thymeleaf).
+    If you want to return raw data (JSON, XML, String), you must use @ResponseBody.
+
+-> Explore about the @RequestMapping clearly ?
+
+-> Difference b/w @RequestMapping and @GetMapping see below:
+| Feature   | `@RequestMapping`                                                 | `@GetMapping`                        |
+| --------- | ----------------------------------------------------------------- | ------------------------------------ |
+| Scope     | Generic (any HTTP method)                                         | Specific to GET requests             |
+| Verbosity | Verbose (need method param)                                       | Short and clean                      |
+| Use case  | When you want a single method to handle **multiple HTTP methods** | When you want to handle **only GET** |
+
+-> so here for the extra logic and all na we have to use "Property"
+
+✅ Recommended Priority for You
+
+High Priority (Must finish first):
+
+Core Spring Boot + Beans + DI + Scopes
+
+JPA (CRUD + Relationships + Queries)
+
+@Transactional
+
+AOP
+
+Web/REST Enhancements
+
+Medium Priority (Next after above):
+
+Async
+
+Security Basics
+
+JWT / OAuth
+
+Low Priority (Optional / Later):
+
+HATEOAS, Profiling, @ConditionalOnProperty
+
+Microservices
+
+
+     
+=> Here mainly explore about the DAO, DataSource, EntityManager, JPARepository, CRUDOperations, etc these are there

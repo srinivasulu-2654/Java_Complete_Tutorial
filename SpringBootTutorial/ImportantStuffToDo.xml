@@ -485,3 +485,178 @@ This Servlet generates HTML and sends it to the browser.
 => "@ModelAttribute" explore this very very very important
 
 => Here if there is alien and alien1 then use ModelAttribute othere ModelAttribute is completely optional
+
+
+<!-- package com.example.demo;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+
+@SpringBootApplication
+public class DemoApplication implements CommandLineRunner {
+
+	@Autowired
+	private Coach coach;
+
+	public static void main(String[] args) {
+
+		ApplicationContext context = SpringApplication.run(DemoApplication.class, args);
+	}
+
+	public void run(String...args)  {
+		System.out.println("System getting started...");
+		System.out.println(coach.getworkoutdaily());
+	}
+
+} -->
+
+=> Here the above code CommandLineRunner we have to implement this because of after running ApplicationContext method then it will come automatically to the next function
+
+
+************** Important points in Shrayansh Jain udemy Course **********************
+
+
+=> 📊 Data Flow Example (User Fetch)
+
+Client → /users/1
+
+Controller → calls userService.getUserById(1)
+
+Service → applies business logic → calls userRepository.findById(1)
+
+Repository → fetches User from DB
+
+Service → converts User → UserDTO
+
+Controller → returns JSON response to Client
+
+👉 So mava, this Layered Architecture makes sure:
+
+Controller = talks to client
+
+Service = brain (business logic)
+
+Repository = talks to database
+
+Entity/DTO/Utility/Config = support system
+
+=> | Feature                | `@Controller`            | `@RestController`           |
+| ---------------------- | ------------------------ | --------------------------- |
+| Purpose                | MVC Web Apps (HTML, JSP) | REST APIs (JSON/XML)        |
+| Return Value           | View (page)              | Data (JSON/XML)             |
+| Needs `@ResponseBody`? | Yes (for JSON)           | No (built-in)               |
+| Common Usage           | Websites, dashboards     | Backend APIs, microservices |
+
+
+**************Difference b/w @Controller and @RestController ?*****************
+
+-> If we use @Controller we should use @ResponseBody because if we wont give then it wont give JSON format
+-> But in @RestController it will give automatically without using @ResponseBody
+
+-> 📌 What is @ResponseBody in Spring?
+  👉 @ResponseBody tells Spring "the return value of this method should go directly into the HTTP response body" instead of looking for a view (HTML/JSP page).
+    By default, if you use @Controller, Spring assumes you want to return a view name (like JSP/Thymeleaf).
+    If you want to return raw data (JSON, XML, String), you must use @ResponseBody.
+
+-> Explore about the @RequestMapping clearly ?
+
+-> Difference b/w @RequestMapping and @GetMapping see below:
+| Feature   | `@RequestMapping`                                                 | `@GetMapping`                        |
+| --------- | ----------------------------------------------------------------- | ------------------------------------ |
+| Scope     | Generic (any HTTP method)                                         | Specific to GET requests             |
+| Verbosity | Verbose (need method param)                                       | Short and clean                      |
+| Use case  | When you want a single method to handle **multiple HTTP methods** | When you want to handle **only GET** |
+
+-> so here for the extra logic and all na we have to use "PropertyEditor"
+
+-> Explain about the @PathVariable?
+  ✅ Summary:
+    @RequestParam → extracts values from query parameters (/user?id=10).
+    @PathVariable → extracts values from path itself (/user/10).
+
+-> How can we create Bean ?
+  | Method                                     | When to use                             |
+| ------------------------------------------ | --------------------------------------- |
+| `@Component`                               | Quick bean creation, default choice     |
+| `@Service` / `@Repository` / `@Controller` | Semantic, indicates role                |
+| `@Bean` in `@Configuration`                | When you need **custom creation logic** |
+| `@Autowired`                               | For **injecting one bean into another** |
+
+
+-> Here if there is @Component and also parameter constructor then it wont work because it only work for default constructors
+   so this time we haave to use @Bean this came into the picture
+
+-> Difference b/w @Component and @Configuration
+  | Feature           | `@Component`                                | `@Configuration`                                                         |
+| ----------------- | ------------------------------------------- | ------------------------------------------------------------------------ |
+| **Usage**         | Marks a class as a bean                     | Marks a class as a config file                                           |
+| **Bean creation** | Spring auto-creates the bean from the class | You manually define beans using `@Bean` methods                          |
+| **Best for**      | Simple beans (Services, DAO, Controllers)   | Complex beans, third-party beans, or when customization is needed        |
+| **Scanning**      | Needs `@ComponentScan` or auto-scan         | Can be loaded directly in `@SpringBootApplication`                       |
+| **Example**       | `@Component public class CricketCoach {}`   | `@Configuration public class AppConfig { @Bean CricketCoach coach(){} }` |
+
+
+-> So here very very very very important thing to understand like if there are multiple beans use @Primary or @Qualifier @
+
+
+-> Important things are like explore these things DAO, EntityManager, DataSource, JPARepository, CRUDOperations repositories, etc.
+
+-> So actually @Repository is a Spring stereotype annotation that marks a class as a data-access (DAO) component,
+   “This class talks to the database, so treat it as a persistence bean.”
+
+-> Exception translation (this includes SQLException, PersistenceException)
+
+-> Explore well about the @Transactional part for atleast 1 year of experience candidate
+
+-> Explore these things for sure mava stereotype annotation, data access / persistence layer.
+
+-> | Stereotype    | Purpose                                |
+| ------------- | -------------------------------------- |
+| `@Component`  | Generic Spring bean (any role)         |
+| `@Service`    | Business/service logic                 |
+| `@Controller` | Web controller (handles HTTP requests) |
+| `@Repository` | Data-access / persistence component    |
+
+
+-> if we use @RestController we dont need to use @ResponseBody it will create automatically
+
+| Annotation          | Used On      | Purpose                                         |
+| ------------------- | ------------ | ----------------------------------------------- |
+| **@RestController** | Class        | Marks as REST controller, auto `@ResponseBody`. |
+| **@RequestMapping** | Class/Method | Map path + method (GET/POST/etc.).              |
+| **@GetMapping**     | Method       | Shortcut for `@RequestMapping` with GET.        |
+| **@PostMapping**    | Method       | Shortcut for POST.                              |
+
+
+
+-> Explore about all the Exceptions like runtime 
+
+   -> Checked Exception 
+   -> Unchecked Exception etc
+
+
+-> In spring boot rest we handled Exception till /300049 like this that means studentId >= thestudents.size();
+-> But i didn't handled this thing students/jdkahdajlkh like wrong text like that 
+
+| Status | Meaning                        | Example                         |
+| ------ | ------------------------------ | ------------------------------- |
+| 200    | OK (successful GET/PUT)        | GET /students                   |
+| 201    | Created (successful POST)      | POST /students                  |
+| 204    | No Content (successful DELETE) | DELETE /students/5              |
+| 400    | Bad Request (client error)     | Invalid input data              |
+| 404    | Not Found                      | Student with id 5 doesn’t exist |
+| 500    | Internal Server Error          | Something wrong on server side  |
+
+
+-> So here explore about this like "Clearly explain me about the rest api design"
+
+-> 1️⃣ What is a resource / entity?
+
+In REST API, a resource is something in your system that clients want to interact with.
+
+It usually corresponds to a real-world object or a database entity.
+
+Each resource has a unique URL (endpoint) in your API

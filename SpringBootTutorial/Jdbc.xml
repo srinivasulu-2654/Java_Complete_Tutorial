@@ -1,0 +1,47 @@
+-> Application <-> JDBC <-> DataBase(Mysql,postgres)
+-> JDBC is a java API (set of interfaces and classes) that allows java applications to connect and interact with relational databases in a        standard way
+
+-> It acts as a bridge between code and database
+
+Steps to connect the JDBC:
+
+1. import the packages
+2. Load Drivers
+3. Register Driver
+4. Create Connection
+5. Create Statement
+6. Execute Statement
+7. Close
+
+-> Above steps are like You want to map JDBC steps into a real-life example (you calling your office from home)
+
+1. You take your mobile phone in hand.
+2. You insert SIM card into the phone.
+3.Your SIM card now registers with the telecom network (tower).
+4.You dial your office landline number from mobile.
+5. You prepare what to say on the call (e.g., “Hello, can you tell me the meeting update?”).
+6. ➡️ You ask the question:
+7. ➡️ After getting the info, you say bye and cut the call.
+
+
+Summary :
+
+1. Import Packages   → Take phone
+2. Load Driver       → Insert SIM
+3. Register Driver   → SIM connects to network
+4. Create Connection → Dial office number
+5. Create Statement  → Decide what to ask
+6. Execute Statement → Ask question
+7. Close             → End call
+
+
+So here comes to practically :
+
+-> First in intellij open and create project like java language
+-> Now it have only java jdk external libraries but we want extra databases libraries also
+-> So now we have to go to google and search for postgres drivers for JDBC
+-> Or else download from maven repository
+
+
+
+

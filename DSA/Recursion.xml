@@ -1,0 +1,211 @@
+******************Introduction**********************************
+
+-> Make i/p(input) small? But Why
+-> Actually we wont make the input small by default it will become small
+-> We have to take decision based on that decision problem chote ho jayega
+-> For example if we want good package then choose good college then study good dsa like that 
+-> decision(primary) -> smaller i/p(secondary)
+
+-> How to identify this is the recusrion problem?
+   -> it will be like choice + decision
+
+-> Recusive Tree:
+   Example: Subset problem
+
+
+ // Forward printing
+   void f(int cnt, int n) {
+    if(cnt > n) return;
+
+    // Case 1
+    cout << cnt << " ";   // print first
+    f(cnt+1, n);
+}
+
+
+// backward printing
+    void f(int cnt, int n) {
+    if(cnt > n) return;
+
+    // Case 2
+    f(cnt+1, n);
+    cout << cnt << " ";   // print after recursion
+}
+
+
+Induction cout<<n<<" " , Hypothesis => print(n-1)
+
+=> Recursion 3 ways (as per Aditya verma):
+ 1. IBH (Induction Base Hypothesis)
+ 2.Tree Diagram
+ 3.choice Diagram
+
+
+
+ <!-- 001 - 50. Pow(x, n) -->
+
+ Steps :
+
+ Initialize answer
+
+-> 1.Start with ans = 1.0 (because multiplying by 1 does not change the value).
+
+-> 2.Convert n to long long (nn)
+
+    Store n into nn as long long because n can be INT_MIN (-2^31) and taking -n would overflow in normal int.
+
+    If nn is negative, make it positive (nn = -nn) since we'll first compute the positive power.
+
+-> 3.Loop while nn > 0
+
+    If nn is odd → multiply ans by current x once, then reduce nn by 1.
+    (This handles the “extra” multiplication when exponent is odd).
+
+    If nn is even → square x (i.e., x = x * x) and halve nn (i.e., nn = nn / 2).
+    (This is the key optimization: instead of multiplying x many times, square it and reduce exponent faster).
+
+-> 4.Handle negative exponent
+
+    If original n was negative, take reciprocal:
+    ans = 1/ans;
+
+-> 5.Return answer
+
+Code:
+
+        <!-- double myPow(double x, int n) {
+        double ans = 1.0;
+        long long nn = n;
+        if(nn < 0) nn = -1 * nn;
+        while(nn>0)
+        {
+            if(nn % 2 == 1)
+            {
+                ans = ans * x;
+                nn = nn - 1;
+            }
+            else
+            {
+                x = x * x;
+                nn = nn/2;
+            }
+        }
+        if(n<0) ans = (double)(1.0) / (double)(ans);
+        return ans;
+    } -->
+
+TC:O(logn) SC : O(1)
+
+*******************************Completed*************
+
+<!-- 002 - Count Good Numbers(Leetcode 1922)  -->
+
+-> This is purely maths problem which is "permutation and combinations"  ****************
+Steps:
+-> So if we want to make n lenght of string 
+-> if n = 6(length) then even indices will come 3 and odd indices will come 3
+-> if n = 5(lenght) then even indices will come 3 and odd indices will come 2
+-> So from even = (n+1)/2 and odd = (n/2)
+-> so in even indices we can fill (0,2,4,6,8)
+-> so in odd indices we can fill (2,3,5,7)
+-> so if n = 6 then 5^3 * 4^3 (like) in each postion we are filling of posibilites of 5 and in odd 4 choices
+
+=> It's very complicated in passing modulus so take care of everything about this question
+
+
+<!-- 003 - Sort an array / sort a stack -->
+
+Steps:
+
+-> So here we have to create the function insert and also sortArray
+-> In sortArray function we have to delete element by element when the array has 1 element then return
+-> and then call the insert function 
+-> insert the elements one after the other sortedly
+
+<!-- 004 - Reverse a stack using Recursion this also same as sort an array -->
+
+-> Same as like the above problem so strictly try to master that problem
+
+<!-- 005 - delete mid of the stack -->
+    
+    <!-- void solve(stack<int>&s,int k)
+    {
+        if(k==1)
+        {
+            s.pop();
+            return;
+        }
+        int temp = s.top();
+        s.pop();
+        solve(s,k-1);
+        s.push(temp);
+        return;
+    }
+    
+    void deleteMid(stack<int>& s) {
+        // code here..
+        int n = s.size();
+        int mid = (n/2)+1;
+        solve(s,mid);
+    } -->
+
+TC : O(n) sc: O(n)
+
+<!-- 006 - K-th Symbol in Grammar  -->
+
+Steps:
+
+-> Here the only thing is observation that we have to check the Grammar
+-> for example if n = 4 then the Grammar will be 0 1 1 0 1 0 0 1
+-> so if we see we have to take mid if mid >= k then solve(n-1,k)
+-> else solve(n-1,k-mid);
+
+Here there is only 1 recusrive call
+TC : O(n) SC : O(n)
+
+****************Completed*********************
+
+<!-- 007 - Recursion on Subsequences | Printing Subsequences (power set) -->
+
+Steps:
+
+-> So here very important thing is if we pass like f(ind,string &temp, string &s,vector<string>&res)
+   then here only temp is used among all the posibilites(like resuses the same string)
+   so that's why temp.push_back(s[ind]);
+   and also should backtrack because it is reuses the same string every time 
+
+-> But in this case f(ind,string temp, string &s,vector<string>&res)
+   we can directly like this f(ind+1,temp+s[ind],s,res)
+   every time creates new string on temp
+   no need to do backtracking
+
+<!-- TC : O(n x 2^n) SC : O(n) -->
+
+******************Completed***************
+
+<!-- 008 - Check if there exists a subsequence with sum K (GFG Practice problem) -->
+
+-> Great problem to explore in depth about the recursion
+-> But here there will be overlapping subproblems so take care about this 
+-> So use DP memoization
+
+    ✅ Key Difference
+    Subset-sum type problems → DP works because state space is bounded (sum <= k).
+    Min + Max condition problems → DP is inefficient; two pointers (after sorting) is the optimal trick.
+
+<!-- 009 - 1498. Number of Subsequences That Satisfy the Given Sum Condition -->
+
+-> So here will think like this problem only but not this type of problem
+-> see the difference above and this and do the solution 
+-> Carefullly solve this using 2 pointers 
+
+<!-- 010 - Generate all balanced Parentheses -->
+
+-> base condition is check temp == 2*n
+-> add into temp ('(')
+-> pop_back()
+-> add into temp(')')
+-> pop_back();
+-> while checking for base condition check for this also lik temp is balanced or not
+
+

@@ -1,0 +1,329 @@
+**************The only main thing that i got to know is if we store in unordered_set the memory address and all different from node to node check this clearly it will come in this problem(Intersection of Two Linked Lists) *****************
+
+<!-- **************Slow & Fast pointers ********************** -->
+
+Middle of the LinkedList
+Detect loop cycle in LinkedList
+Linked List Cycle II/Find the first node of loop in linked list
+Length of Loop in LL
+Palindrome Linked List
+Delete the Middle Node of a Linked List
+
+
+<!-- 001 - Middle of the Linked List -->
+
+        ListNode* middleNode(ListNode* head) {
+        if(head==NULL || head->next == NULL) return head;
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast!=NULL && fast->next!=NULL)
+        {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
+       }
+
+=> Follow Striver logic no need to write swag wala developer code 
+
+<!-- 002 - Reverse a LinkedList [Iterative] -->
+
+        ListNode* reverseList(ListNode* head) {
+        if(head == NULL || head->next == NULL)
+        {
+            return head;
+        }
+        ListNode* newHead = reverseList(head->next);
+
+        ListNode* front = head->next;
+        front->next = head;
+        head->next = NULL;
+
+        return newHead;
+    }
+
+-> Make sure to learn both Approaches recusion and Iterative
+
+<!-- 003 - Linked List Cycle II/Find the first node of loop in linked list -->
+
+Steps:
+-> Same like Detect loop in LinkedList
+-> if slow == fast then put slow again on head and move 
+-> slow and fast pointers one time and return slow
+
+<!-- 004 - Length of Loop in LL -->
+
+Same as the above problem (Find the first node of loop in linked list)
+=> just one change after finding slow = fast then 
+=> take cnt = 0; and then slow->next != fast 
+=> cnt++ and slow = slow->next and return cnt + 1;
+
+TC : O(n) and SC : O(1)
+
+<!-- 005 - Palindrome of the linked list -->
+
+Approach 1:
+
+-> Using stack data structure
+-> first fill all the nodes in the stack
+-> again travers the node with st.top()
+
+Approach 2;
+
+-> Here use reverse function and also apply slow and fast pointers
+
+<!-- 006 - Odd Even Linked List -->
+
+Approach 1:(Bruete Force)
+-> Take vector and run 2 times while loop temp 
+-> first place temp in head and add into vec and move temp = temp->next->next
+-> Repeat second time  place temp in head->next and add into vec and move temp = temp->next->next
+-> and then change the values from vec into linkedlist according to the nodes
+
+<!-- TC : O(2n) and  SC: O(n) -->
+
+Approach 2:
+
+        <!-- ListNode* oddEvenList(ListNode* head) {
+        
+        if(head==NULL || head->next==NULL) return head;
+        ListNode* odd = head;
+        ListNode* even = head->next;
+        ListNode* evenHead = even;
+        while(even!=NULL && even->next!=NULL)
+        {
+            odd->next = even->next;
+            odd = odd->next;
+            even->next = odd->next;
+            even = even->next;
+        }
+        odd->next = evenHead;
+        return head;
+    } -->
+
+<!-- 007 - Segregate even and odd nodes in a Linked List -->
+
+-> Same like above question solve this question clealy very important to understand the concepts
+
+        <!-- Node* divide(Node* head) {
+        // code here
+        Node* evenHead = NULL;
+        Node* oddHead = NULL;
+        Node* odd = NULL;
+        Node* even = NULL;
+        Node* temp = head;
+        
+        while(temp!=NULL)
+        {
+            if(temp->data % 2 == 0)
+            {
+                if(evenHead == NULL) evenHead = temp;
+                if(even == NULL) even = temp;
+                
+                else
+                {
+                     even->next = temp;
+                    even = temp;
+                }
+            }
+            else
+            {
+                if(oddHead == NULL) oddHead = temp;
+                if(odd == NULL) odd = temp;
+                
+                else
+                {
+                    odd->next = temp;
+                    odd = temp;
+                }
+            }
+            
+            temp = temp->next;
+        }
+        
+        // Special cases check clearly
+        
+        if(evenHead == NULL) return oddHead;
+        if(oddHead == NULL) return evenHead;
+        
+        even->next = oddHead;
+        odd->next = NULL;
+        
+        return evenHead;
+    } -->
+
+
+*****************Completed******************
+
+<!-- 008 - Remove Nth Node From End of List -->
+
+Approach 1:(Bruete Force)
+-> calculate total number of nodes
+-> then total - n; run till here that means pos == 0
+-> then temp = temp->next->next
+-> Check carefully about the tescases
+
+       <!-- ListNode* removeNthFromEnd(ListNode* head, int n) {
+       
+       if(head == NULL) return NULL;
+        int total = 0;
+        ListNode* temp = head;
+        while(temp!=NULL)
+        {
+            total++;
+            temp = temp->next;
+        }
+        
+        if(total == n)
+        {
+            ListNode* newHead = head->next;
+            return newHead;
+        }
+
+        int pos = total - n;
+        
+        temp = head;
+        while(temp!=NULL)
+        {
+            pos; decrement the pos
+            if(pos == 0)
+            {
+               temp->next = temp->next->next;
+            }
+            temp = temp->next;
+        }
+
+        return head;
+    } -->
+
+
+Approach 2:
+
+        <!-- ListNode* removeNthFromEnd(ListNode* head, int n) {
+        if(head==NULL) return NULL;
+        ListNode* fast = head;
+        for(int i=0;i<n;i++) fast = fast->next;
+        if(fast==NULL) return head->next;
+        ListNode* slow = head;
+        while(fast->next!=NULL)
+        {
+            slow = slow->next;
+            fast = fast->next;
+        }
+        ListNode* deleteNode = slow->next;
+        slow->next = slow->next->next;
+        delete deleteNode;
+        return head;
+    } -->
+
+**********************Completed************************
+
+<!-- 009 - Delete the Middle Node of a Linked List  -->
+
+=> Same as like fast and slow pointers only (like same as middle of the linkedlist)
+
+<!-- 010 - Sort a linked list of 0s, 1s and 2s -->
+
+Approach 1:
+
+-> Count 0's, 1's, 2's 
+-> then traverse again like temp->data == 0 (temp->data = 0) zerocnt--;
+-> like this we have to set 0's, 1's, 2's in sorted order mava 
+
+Approach 2:
+
+=> We have to Segregate all the the nodes and should attach each and every one 
+=> same like this problem(Segregate even and odd nodes in a Linked List)**********
+=> Explore ones
+
+<!-- 011 - Intersection of Two Linked Lists -->
+
+Approach 1:
+
+-> Store in unordered_set of linkedlist a;
+-> And traverse another linkedlist of b where the memory address of same node in set then straight away return the b temp node
+
+Approach 2:
+
+-> Like temp1, temp2 traverse like this until temp1 != temp2;
+-> Here if temp1 = NULL then point to head2
+-> if temp2 = NULL then point to head1
+-> so why here we are doingn like this na there will be difference in those Lengths of 1st list and 2nd list
+=> Here the main reason behind this logic is difference in their Length of d***************
+
+        <!-- ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        
+        if(headA == NULL || headB == NULL) return NULL;
+        ListNode* t1 = headA;
+        ListNode* t2 = headB;
+        while(t1 != t2)
+        {
+            t1 = t1->next;
+            t2 = t2->next;
+            
+            if(t1 == t2) return t1; // handling for NULL case in both lists
+
+            if(t1 == NULL) t1 = headB;
+            if(t2 == NULL) t2 = headA;
+        }
+      return t1;
+    } -->
+
+********************Completed************************
+
+<!-- 012 - Add 1 to a Linked List Number -->
+
+Approach 1: (Bruete Force)
+
+-> Reverse linked list
+-> temp = head , carry = 1;
+-> add temp.data = temp.data + carry
+-> if(data<10) carry = 0 break
+-> else data = 0 and carry = 1;
+-> out of while loop if carry == 1 then create newNode and point to reverse(head) return newHead
+-> else simply reverse(head) and return head
+
+TC : O(3n) and  Sc: O(1)
+
+Approach 2 : (backTracking recusion)
+
+-> 
+
+    <!-- int helper(Node* temp)
+    {
+      if(temp == NULL) return 1;
+      int carry = helper(temp->next);
+      
+      temp->data += carry;
+      
+      if(temp->data < 10) return 0;
+      temp->data = 0;
+      return 1;
+      
+  }
+  
+    Node* addOne(Node* head) {
+        
+        int carry = helper(head);
+        
+        if(carry == 1)
+        {
+            Node* newHead = new Node(1);
+            newHead->next = head;
+            return newHead;
+        }
+        
+        return head;
+    } -->
+
+TC : O(n) sc : O(n) -> recusive stack space
+
+**************************Completed************************
+
+
+<!-- 013 - Add Two Numbers in linkedlist  -->
+
+Steps:
+-> Same as like carry concepts
+-> and take dummy node will be good for curr traversing 
+-> return dummy->next

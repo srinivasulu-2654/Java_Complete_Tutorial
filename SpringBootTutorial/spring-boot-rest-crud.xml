@@ -1,0 +1,13 @@
+Explore everything about the @PostConstruct
+
+5. Simple Analogy
+
+Think of @PostConstruct like:
+
+You rent a shop.
+
+Before opening day, you arrange shelves and stock items once.
+
+When customers come in, you don’t keep rearranging everything — you just serve them.
+
+-> Explore about the Exception handling that means if the student list is of size 3 and if we send the 4 number in url it will throws Exception handling
